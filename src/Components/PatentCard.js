@@ -34,7 +34,7 @@ class PatentCard extends Component {
             <Grid.Row >
             <Grid.Column textAlign={'left'} width={8}>
             <span><Header></Header></span>
-            <HeaderWithType type={'Title'} size={'h2'} content={'Method of packaging articles'} />
+            <HeaderWithType type={'Title'} size={'h2'} content={this.patentData['-title']} />
             <Divider />
             <Header as='h2'>Abstract</Header>
             <p>{this.patentData.abstract.p['#text']}</p>
@@ -46,12 +46,12 @@ class PatentCard extends Component {
             </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-              <Grid.Column textAlign={'left'} width={8}>
+            <Grid.Column textAlign={'left'} width={8}>
                 <Tab menu={{ pointing: true }} panes={panes} />
                 </Grid.Column>
-              <Grid.Column textAlign={'left'} width={8}>
-                <PartiesTable />
-                </Grid.Column>
+                <Grid.Column textAlign={'left'} width={8}>
+                <PartiesTable parties={this.patentData['bibliographic-data']['parties']} />
+            </Grid.Column>
               </Grid.Row>
           </Grid>
           <br/>

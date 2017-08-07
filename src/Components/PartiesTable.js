@@ -3,7 +3,25 @@ import {
   Table
 } from 'semantic-ui-react'
 class PartiesTable extends Component {
+
+    getManyInfo(dataArray){
+        return(dataArray.map((item, index) => (
+        <span key={index}>{this.getInfo(item, index)}</span>
+    )))
+    }
+    getInfo(item){
+        return(
+        <span>
+            {!!item.addressbook['name'] ? item.addressbook['name']['#text'] : '' }
+            {!!item.addressbook['first-name'] ? item.addressbook['first-name']['#text'] : ''}
+            {!!item.addressbook['last-name'] ? item.addressbook['last-name']['#text'] : ''}
+            {!!item.addressbook['address'] ? ` (${!!item.addressbook['address']['city'] ? item.addressbook['address']['city']['#text'] : ''} ${!!item.addressbook['address']['country'] ? item.addressbook['address']['country']['#text'] : ''})` : ''}
+            <br/>
+        </span>
+    )
+    }
     render() {
+        const {inventors, assignees, agents} = this.props.parties
         return (
             <Table striped>
                 <Table.Header>
@@ -16,25 +34,19 @@ class PartiesTable extends Component {
                     <Table.Row>
                         <Table.Cell>Inventor(s)</Table.Cell>
                         <Table.Cell>
-                            Franz Silva (VE),
-                            Franz Silva (VE),
-                            Franz Silva (VE)
+                            {this.getManyInfo(inventors.inventor)}
                         </Table.Cell>
                     </Table.Row>
                     <Table.Row>
                         <Table.Cell>Assignee(s)</Table.Cell>
                         <Table.Cell>
-                            Franz Silva (VE),
-                            Franz Silva (VE),
-                            Franz Silva (VE)
+                            {this.getInfo(assignees.assignee)}
                         </Table.Cell>
                     </Table.Row>
                     <Table.Row>
                         <Table.Cell>Agent(s)</Table.Cell>
                         <Table.Cell>
-                            Franz Silva (VE),
-                            Franz Silva (VE),
-                            Franz Silva (VE)
+                            {this.getManyInfo(agents.agent)}
                         </Table.Cell>
                     </Table.Row>
                     
