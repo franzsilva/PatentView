@@ -7,13 +7,16 @@
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "npm-run-all": "^4.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
     "semantic-ui-react": "^0.71.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all --parallel start-server start-dev",
+    "start-dev": "react-scripts start",
+    "start-server": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
