@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HeaderWithType from "./HeaderWithType";
 import PartiesTable from "./PartiesTable";
+import moment from "moment";
 import PatentClaims from "./PatentClaims";
 import PatentDescription from "./PatentDescription";
 import { Grid, Header, Segment, Tab, Divider } from "semantic-ui-react";
@@ -62,7 +63,7 @@ class PatentCard extends Component {
               <HeaderWithType
                 type={"Date"}
                 size={"h5"}
-                content={this.patentData["-date"]}
+                content={moment(this.patentData["-date"]).format('ll')}
               />
             </Grid.Column>
           </Grid.Row>
